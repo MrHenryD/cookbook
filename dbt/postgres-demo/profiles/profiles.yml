@@ -1,0 +1,22 @@
+postgres-demo: 
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: warehouse
+      port: 5432
+      user: dwh  # "{{ env_var('POSTGRES_USERNAME') }}"
+      pass: password  # "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: dwh
+      schema: public
+
+    prod:
+      type: postgres
+      threads: 1
+      host: warehouse
+      port: 5432
+      user: dwh
+      pass: password
+      dbname: dwh
+      schema: public
