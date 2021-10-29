@@ -1,0 +1,16 @@
+# Environment
+env/
+
+# Static files
+data/
+temp/
+artifacts/
+
+# Mac
+.DS_Store
+
+# Cache
+__pycache__
+
+# Jupyter
+.ipynb_checkpoints
