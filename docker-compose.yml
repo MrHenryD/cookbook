@@ -15,6 +15,10 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: dwh
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "dwh"]
       interval: 10s

@@ -17,3 +17,9 @@ __pycache__
 
 # dbt
 .user.yml
+
+# Database
+data/
+
+# Java dependencies
+jars/

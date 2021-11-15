@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+  - name: fruit_purchases_a
+    description: "Fruit purchases"
+    columns:
+      - name: product
+        description: "The type of purchase"
+        tests:
+          - accepted_values:
+              values: ['apple', 'banana', 'orange']
