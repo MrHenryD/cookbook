@@ -10,3 +10,13 @@ models:
         tests:
           - accepted_values:
               values: ['apple', 'banana', 'orange']
+  - name: users_incremental
+    description: "List of users added"
+    columns:
+      - name: user
+        description: "Unique identifier"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fruit_purchases_a')
+              field: user

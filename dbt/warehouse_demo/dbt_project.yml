@@ -19,4 +19,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 models:
-  warehouse_demo:    
+  warehouse_demo:
+    

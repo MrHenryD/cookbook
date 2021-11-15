@@ -94,6 +94,33 @@ models:
 
 ```
 
+### Incremental loading
+https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-is-an-incremental_strategy
+https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#filtering-rows-on-an-incremental-run
+
+```
+$ cat models/customers/users_incremental.sql
+
+{{
+    config(
+        materialized='incremental',  // materializaton
+        unique_key='user',           // unique identifier (merge condition) - should be a single field
+        on_schema_change='fail',     // how schema diff is handled
+        incremental_strategy='append'  // incremental update strategy
+    )
+}}
+SELECT DISTINCT
+    "user"
+FROM {{ ref('fruit_purchases_a') }}
+
+{% if is_incremental() %}  // condition if this is not the first time running
+
+  where "user" >= (select max("user") from {{ this }})
+
+{% endif %}
+
+```
+
 ### Writing tests
 Tests can be defined as .sql files (under test/ directory) or under schema.yml. Note that you can define multiple files.
 
